@@ -1,0 +1,64 @@
+<div class="calculator">
+  <div class="calculator__container">
+    <h2 class="calculator__title">Калькулятор</h2>
+
+    <div class="calculator__variables">
+      <div class="calculator__variable" *ngFor="let variable of variables; let i = index">
+
+        <ng-container *ngIf="i !== 0">
+          <select
+            class="calculator__select calculator__select--operation"
+            [(ngModel)]="variable.operation"
+          >
+            <option *ngFor="let op of operations" [value]="op">
+              {{ op }}
+            </option>
+          </select>
+        </ng-container>
+
+        <input
+          type="number"
+          class="calculator__input"
+          [(ngModel)]="variable.value"
+        />
+
+        <select
+          class="calculator__select"
+          [(ngModel)]="variable.modifier"
+        >
+          <option *ngFor="let mod of modifiers" [value]="mod">
+            {{ mod === 'none' ? 'нет' : mod }}
+          </option>
+        </select>
+
+        <button
+          class="calculator__remove"
+          (click)="removeVariable(i)"
+          title="Удалить переменную"
+        >
+          ×
+        </button>
+      </div>
+      <button (click)="addVariable()" class="calculator__button calculator__button--add">
+        Добавить переменную
+      </button>
+    </div>
+
+    <span class="calculator__result">
+      {{ result !== undefined ? result : 'Нажмите Рассчитать' }}
+    </span>
+
+    <button (click)="calc()" class="calculator__button">
+      Рассчитать
+    </button>
+  </div>
+
+  <div class="calculator__history">
+    <h3>История операций</h3>
+    <ul>
+      <li *ngFor="let element of history">{{ element }}</li>
+    </ul>
+    <button class="calculator__button" (click)="clearHistory()">Очистить Историю</button>
+  </div>
+</div>
+

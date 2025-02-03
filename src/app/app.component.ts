@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { MyCalculatorComponent } from "./my-calculator/my-calculator.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  imports: [MyCalculatorComponent]
 })
 export class AppComponent {
-  title = 'my-first-angular-app';
+
+  title = 'my-first-angular-app'; // Поле класса
+  tooltip = 'Hello, Angular!';
+
+  showMassage() {
+    alert('Hello, Angular!');
+  }
 }
