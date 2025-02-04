@@ -10,7 +10,7 @@ interface CalcVariable {
 
 @Component({
   selector: 'app-my-calculator',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule],
   templateUrl: './my-calculator.component.html',
   styleUrl: './my-calculator.component.scss',
 })
